@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="description" content="Pulsar Garage - motorcycle maintenance, fuel and expense tracker">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+  <title>Pulsar Garage</title>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">PG</div>
+        <div><b>PULSAR<span> GARAGE</span></b><small>YOUR BIKE. EVERY DETAIL.</small></div>
+      </div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-copy"><span class="eyebrow">YOUR MOTORCYCLE</span>
+          <h1>Pulsar 135 <em>LS</em></h1>
+          <p>2012 · RED · BAJAJ</p>
+          <div class="hero-chip">● BIKE PROFILE</div>
+        </div>
+        <div class="bike-art">
+          <div class="bike-glow"></div><img
+            src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=85"
+            alt="Motorcycle" onerror="this.style.display='none'">
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card main-stat">
+          <div class="stat-head">CURRENT ODOMETER <span>↗</span></div>
+          <div class="stat-value"><span id="odoValue">—</span><small>km</small></div><button class="text-action"
+            data-modal="odo">UPDATE READING →</button>
+        </article>
+        <article class="stat-card">
+          <div class="stat-head">FUEL RANGE</div>
+          <div class="stat-value"><span id="rangeValue">—</span><small>km</small></div>
+          <div class="muted" id="fuelLitres">Add fuel details</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-head">FUEL EFFICIENCY</div>
+          <div class="stat-value"><span id="effValue">—</span><small>km/L</small></div>
+          <div class="muted">Based on fill-ups</div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-head">THIS MONTH</div>
+          <div class="stat-value money" id="monthSpend">LKR 0</div>
+          <div class="muted">Total bike expenses</div>
+        </article>
+      </section>
+
+      <section class="section-head">
+        <div><span class="eyebrow">STAY AHEAD</span>
+          <h2>Maintenance status</h2>
+        </div><button class="small-link" data-tab="maintenance">VIEW ALL →</button>
+      </section>
+      <section class="service-card">
+        <div class="service-icon">🛠</div>
+        <div class="service-info"><b id="nextServiceTitle">Next service</b>
+          <p id="nextServiceSub">Set your current mileage to get reminders</p>
+          <div class="progress"><i id="serviceProgress"></i></div>
+        </div>
+        <div class="service-km"><b id="serviceDue">—</b><small>KM LEFT</small></div>
+      </section>
+
+      <section class="quick-actions">
+        <button data-modal="fuel"><span>＋</span><b>Add fuel</b><small>Log a fill-up</small></button>
+        <button data-modal="expense"><span>＋</span><b>Add expense</b><small>Track spending</small></button>
+        <button data-modal="service"><span>＋</span><b>Service log</b><small>Record work</small></button>
+      </section>
+
+      <section class="section-head">
+        <div><span class="eyebrow">YOUR MONEY</span>
+          <h2>Expense overview</h2>
+        </div><button class="small-link" data-tab="expenses">HISTORY →</button>
+      </section>
+      <section class="panel">
+        <div class="expense-row"><span>Fuel</span><b id="fuelTotal">LKR 0</b></div>
+        <div class="expense-row"><span>Maintenance & repairs</span><b id="maintTotal">LKR 0</b></div>
+        <div class="expense-row"><span>Other expenses</span><b id="otherTotal">LKR 0</b></div>
+        <div class="expense-total"><span>ALL-TIME TOTAL</span><b id="allTotal">LKR 0</b></div>
+      </section>
+
+      <section class="section-head">
+        <div><span class="eyebrow">LATEST ACTIVITY</span>
+          <h2>Recent records</h2>
+        </div><button class="small-link" data-tab="history">SEE ALL →</button>
+      </section>
+      <section class="panel" id="recentList">
+        <div class="empty">Your bike records will appear here.</div>
+      </section>
+    </main>
+    <nav class="bottom-nav">
+      <button class="active" data-tab="home"><span>⌂</span>Home</button>
+      <button data-tab="fuel-tab"><span>⛽</span>Fuel</button>
+      <button data-tab="maintenance"><span>⚒</span>Service</button>
+      <button data-tab="expenses"><span>▤</span>Expenses</button>
+      <button data-tab="history"><span>◷</span>History</button>
+    </nav>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-head">
+        <div><span class="eyebrow">PULSAR GARAGE</span>
+          <h2 id="modalTitle">Add record</h2>
+        </div><button class="icon-btn" id="closeModal">✕</button>
+      </div>
+      <form id="recordForm">
+        <div id="formFields"></div><button class="primary-btn" type="submit">SAVE RECORD <span>→</span></button>
+      </form>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+
+</html>

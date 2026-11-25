@@ -1,0 +1,6 @@
+{
+  "appId": "com.av.pulsargarage",
+  "appName": "Pulsar Garage",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
